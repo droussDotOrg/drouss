@@ -1,0 +1,56 @@
+{% extends "DROUSSBookBundle::base.html.twig" %}
+
+{% block body %}
+	<div class="row milieu">
+        {% for row in tableBook %}
+           <div class="row">
+                {% for book in row %}
+                     <div class="col-sm-6 col-xs-12 col-md-6 col-lg-6">
+                      <div class="row">
+                        <div class="col-xs-4">
+                           <a href="{{  path('book_view_pub', {'name' : book.getTitle |insertSep }) }}"><img src="{{ gbd }}/media/couverture/{{ book.getBlanketPath }}"
+                                        class="center-block"></a>
+                        </div>
+                        <div class="col-xs-8">
+                          <ul id="left" class="pull-left">
+                            <li><a href="{{  path('book_view_pub', {'name' : book.getTitle|insertSep }) }}" class="btn btn-lg btn-link" style="padding-left: 0;color:#375881;text-align: left;">{{ book.getTitle |truncate(30,'')}}</a></li>
+                             
+
+                            <li class="hidden-xs">Ecrit par : <span class="grise"><a class="btn btn-link" href="#">{{ book.getAuthor|truncate(27,'.')}}</a></span></li>
+                         <li>Edition : <span class="grise"><a class="btn btn-link" href="#">{{ book.getEdition}}</a></span></li>
+                         
+                          <li>Langue : <span class="grise"><a class="btn btn-link" href="#">{% for lang in book.getLanguage %} {{ lang.name }} {% endfor %} </a></span></li>
+                          <li>
+						  Format : <span class="grise">
+						  <a class="btn btn-link" href="#">
+							{% for f in book.getFormat %} {{ f.name }} {% endfor %}
+						  </a>
+						  </span>
+						  
+						  </li>
+                          </ul>
+                        </div>
+                      </div>
+                       
+                   
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block footer%}
+	{% block pagination %}
+        <div class="container text-center">
+            <ul class="pagination ">
+                <li class="disabled"><a href="#come">&laquo;</a></li>
+                {% for page in pages %}
+                    <li><a href="{{ path(app.request.attributes.get('_route'), {'category':app.request.get('category')}) }}?page={{ page }}">{{ page }}</a></li>
+                {% endfor %}
+                <li class="disabled"><a href="#come">&raquo;</a></li>
+            </ul>
+        </div>
+    {% endblock %}
+	{{ parent() }}
+{% endblock %}
