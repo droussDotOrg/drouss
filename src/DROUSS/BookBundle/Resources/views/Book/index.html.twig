@@ -1,0 +1,73 @@
+{% extends "DROUSSBookBundle::base.html.twig" %}
+
+{% block body %}
+{% for flashMessage in app.session.flashbag.get('sucess') %}
+<script>
+
+		$(window).on('load', function() {
+		var message = "{{ flashMessage }}";
+	if(message != "")
+	{
+	swal("Message ", message, "success")
+	}
+		});
+
+	</script>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('danger') %}
+<script>
+
+		$(window).on('load', function() {
+		var message = "{{ flashMessage }}";
+	if(message != "")
+	{
+	swal("Message ", message, "danger")
+	}
+		});
+
+	</script>
+{% endfor %}
+{% include 'DROUSSBookBundle:Book:Homehead.html.twig' %}
+{% include 'DROUSSBookBundle:Book:countdown.html.twig' %}
+	{% block  lateral_gauche %}
+    	<div class="col-sm-3 lateral_gauche">
+			{% for book in bookForward %}
+    	{% if book %}
+			<div class="col-xs-6 col-sm-12 ">
+        	<a href="{{  path('book_view', {'name' : book.getTitle |insertSep }) }}"><img src="{{ gbd }}/media/couverture/{{ book.getBlanketPath }}" class=".img-responsive img-thumbnail">
+        	</a>
+        <p class="title text-center"><a href="#" class="btn-link btn-xs" id="pied_">{{ book.getTitle }}</a></p>
+    	</div>
+			<div class="col-xs-6 col-sm-12 hidden-sm" id="">
+        	
+        		<a href="{{  path('book_view', {'name' : book.getTitle |insertSep }) }}"><img src="{{ gbd }}/media/couverture/{{ book.getBlanketPath }}" class=".img-responsive img-thumbnail">
+        	</a>
+        <p class="title text-center"><a href="#" class="btn-link btn-xs" id="pied_">{{ book.getTitle }}</a></p>
+    	</div>
+		{% endif %}
+			{% endfor %}
+    
+			
+			
+		</div>
+	{% endblock %}
+
+	{% block milieu %}
+
+    <div class="col-sm-9 milieu index">
+        {% for row in tableBook %}
+            <div class="row">
+                {% for book in row %}
+                    <div class="col-sm-4 col-xs-12 {% if loop.index0 == 3 %}visible-xs{% endif %}">
+                        <a href="{{  path('book_view', {'name' : book.getTitle  |insertSep}) }}"><img src="{{ gbd }}/media/couverture/{{ book.getBlanketPath }}"
+                                        class="center-block"></a>
+                    <p id="piedIn"><a href="{{  path('book_view', {'name' : book.getTitle  |insertSep}) }}">{{ book.getTitle |truncate(50,'..') }}</a><br><span id="l_a">({% for lang in book.getLanguage %} {{ lang.name }} {% endfor %})</span></p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+       
+ {% endblock %} 

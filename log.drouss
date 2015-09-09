@@ -1,0 +1,29 @@
+@moussa:
+	je vais achever la page qui permet d'affciher les livre je suis un peut fatiguer
+	pour l'url que tu voulu generer avec {{ path('drouss_book_admin_author_show') }} ce n'est pas correct fait simplement {{ path('author_show:') }}.
+		tu doit enlever les prefix
+
+@seny : wéh fixe ce probleme de cache 
+
+@moussa:
+	j'ai fini la page d'accueil
+
+@moussa:
+	attend je vais fixer le probleme avec la cache
+
+@moussa:
+	si hier j'avais un probleme, mais la variable est casiment equivallent et je pense que je vais l'utilse autre part. 
+
+@seny : j'approuv le déplacement du dossier "app/Resources/Required" vers "web/Required" mais est ce que 
+        ** remplacement de "{{ asset('css/bootstrap.min.css') }}" par "{{ gbd }}/style/bootstrap/bootstrap.min.css"
+		marche ? Parce d'après ce que j'ai remarqué hier le bootstrap n'etait pas intégré ... tu sais asset te facile la vie 
+		il lui dit simplement vas chercher dans le dossier web
+
+@moussa:
+	déplacement du dossier "app/Resources/Required" vers "web/Required"
+	supression des dossier "web/css" "web/font" "web/js"
+		** tous ces trois dossier était déja present dans "web/Required"
+	modification du de la ligne 28 de ::base.html.twig
+		** remplacement de "{{ asset('css/bootstrap.min.css') }}" par "{{ gbd }}/style/bootstrap/bootstrap.min.css"
+	creation du dossier "src/DROUSS/BookBundle/Twig" et du fichier d'extension "DROUSSExtension.php" pour les filter d'extention
+	

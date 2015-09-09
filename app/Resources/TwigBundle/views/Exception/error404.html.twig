@@ -1,0 +1,63 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Drouss.org | Page Non trouvée 404 error page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<link href="{{ gbd }}/html/404/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<script>
+		function find(e)
+		{
+			/*alert("444");
+			e.preventDefault();
+			var url = "http://preview.ngnoovzw05cxflxrqo8dxlok0ylul3dich2pfgkkuu4pwrk9.box.codeanywhere.com/web/app_dev.php/seach/";
+    window.location = url+this.elements["pattern"].value;
+			return false;*/
+			
+			var url = "/web/app_dev.php/book/search/";
+  
+			
+			window.location = url+ e.elements["pattern"].value;
+		}
+	</script>
+    
+</head>
+<body>
+	<!-----start-wrap--------->
+	<div class="wrap">
+		<!-----start-content--------->
+		<div class="content">
+			<!-----start-logo--------->
+			<div class="logo">
+				<h1><a href="#"><img src="{{ gbd }}/html/404/images/logo.png"/></a></h1>
+				<span><img src="{{ gbd }}/html/404/images/signal.png"/>Oops! La page que vous rechercher est introuvable</span>
+			</div>
+			<!-----end-logo--------->
+			<!-----start-search-bar-section--------->
+			<div class="buttom">
+				<div class="seach_bar">
+					<p>Vous pouvez retourner a l'<span><a href="http://www.drouss.org">Accueil</a></span> ou faire une recherche</p>
+					<!-----start-sear-box--------->
+					<div class="search_box">
+					<form method="post"  onsubmit="find(this);return false;">
+					   <input name="pattern" type="text" value="Rechercher" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Rechercher';}"><input type="submit" value="">
+				    </form>
+					 </div>
+				</div>
+			</div>
+			<!-----end-sear-bar--------->
+		</div>
+		<!----copy-right-------------->
+	<p class="copy_right">&#169; <a href="http://www.drouss.org" target="_blank">&nbsp;Drouss.org</a> </p>
+	</div>
+	
+	<!---------end-wrap---------->
+</body>
+</html>

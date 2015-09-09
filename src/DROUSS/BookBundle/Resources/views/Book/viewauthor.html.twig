@@ -1,0 +1,39 @@
+{% extends "DROUSSBookBundle::base.html.twig" %}
+
+{% block body %}
+	 <div class="row text-center" style="margin-top: 50px">
+        <h1>{{ author.getName }}</h1>
+    </div>
+
+         <div class="row">
+
+                     
+                             <img src="{{ gbd }}/media/images/auteurs/{{ author.getImagePath }}" alt="" class="block-center img-responsive" style="display: block !important;padding-left: 20px;float: left;
+margin-right: 20px;"><br>
+
+                            <p style="padding-left: 20px;padding-right: 10px;text-align: justify">{{ author.getBiography }}</p><br>
+                            {% if author.getId == 4 %}
+ <a class="btn-link btn-xs" data-toggle="modal" data-target="#ov" href="#">Ses Ouvrages</a>
+
+                        <div class="modal fade" id="ov">
+
+                            <div class="modal-dialog modal-lg">
+
+                                <div class="modal-content " style="background-color: rgb(255, 255, 255) ! important;padding: 20px
+                                ">
+
+{% for o in author.getBook %}<a href="">{{ o.getTitle }}</a><br>{% endfor %}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                            {% else %}
+                            <p style="padding-left: 20px;">{% if author.getBook %}<span style="color: #999">Ses Ouvrages : </span>{% endif %}<br>
+							{% for o in author.getBook %}<a href="">{{ o.getTitle }}</a>---{% endfor %}</p>
+{% endif%}
+
+         
+         </div>
+{% endblock %}

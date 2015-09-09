@@ -1,0 +1,126 @@
+<footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6  col-md-4">
+                    <div class="f_title">Info</div>
+                    <ul class="list-unstyled">
+                      
+                        <li><a data-toggle="modal" data-target="#propos" href="{{ gbd }}/html/propos.html">A propos du Site</a>
+                        </li>
+                        <div class="modal modal-message modal-info fade" id="propos" style="display: none;" aria-hidden="true">
+
+                            <div class="modal-dialog modal-lg">
+
+                                <div class="modal-content " style="">
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <li><a data-toggle="modal" data-target="#aide" href="{{ gbd }}/html/aide.html">Aide</a>
+                        </li>
+                        <div class="modal modal-message modal-success fade" id="aide" style="display: none;" aria-hidden="true">
+
+                            <div class="modal-dialog modal-lg">
+
+                                <div class="modal-content " style="">
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+ <li><a data-toggle="modal" data-target="#contact" href="{{ gbd }}/html/contact.html">Nous Contacter</a>
+                        </li>
+                        <div class="modal modal-message modal-warning fade" id="contact" style="display: none;" aria-hidden="true">
+
+                            <div class="modal-dialog modal-lg">
+
+                                <div class="modal-content " style="">
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </ul>
+                    <div class="row" style=""><img src="{{ gbd }}/media/Logodrouss.png" style="" class="pull-left">
+                    </div>
+                </div>
+                <div class="col-sm-6  col-md-4">
+                    <div class="f_title">Recherche/Index</div>
+                    <ul class="list-unstyled">
+                        <li><a href="{{  path('book_list_author', {}) }}">Auteurs</a>
+                        </li>
+						{% for science in sciences %}
+							<li><a href="{{ path('book_search_science',{name: science.GetName}) }}">{{ science.name }}</a>
+                        </li>
+						{% endfor %}
+                        <div class="dropup">
+                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true" style="border: medium none;
+border-radius: unset;padding-left: 0;
+
+background-color: rgb(28, 101, 137);color:#fff;">
+                                Langues
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                                {% for language in languages %}
+									<li><a href="{{ path('book_search_language',{name: language.getName}) }}" style="color:#1c6589 !important">{{ language.getName }}</a>
+                                </li>
+								{% endfor %}
+                                
+                            </ul>
+                        </div>
+
+
+
+                        <ul>
+                </div>
+                <div class="col-sm-6  col-md-4">
+                    <a class="btn btn-warning btn-lg btn-block" style="margin-bottom: 15px;">S'abonner au news</a>
+
+                    <div class="social text-center">
+
+                        <form method="post" action="{{ gbd }}/php/subscript.php">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="">
+                                        <input class="form-control" placeholder="votre mail ici" required type="email" name="email" />
+                                    </div>
+                                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-success">
+                            s'abonner
+                        </button>
+                        </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <a class="btn btn-danger btn-lg btn-block" style="margin-bottom: 15px;" href="https://fr-fr.facebook.com/drouss.mouride">Rejoignez nous</a>
+
+                    <div class="social text-center" style="margin-bottom: 20px;">
+
+                        <a href="https://plus.google.com/share?url=http://www.drouss.org/&hl=Drouss.org | Plateforme de lecture et de téléchargement sur la bibliographie mouride" target="_blank"><i class="fa fa-google-plus fa-3x"></i></a>
+                        <a href="http://twitter.com/intent/tweet/?url=http://www.drouss.org/&text=Drouss.org | Plateforme de lecture et de téléchargement sur la bibliographie mouride&via={via}" target="_blank"><i class="fa fa-twitter fa-3x"></i></a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.drouss.org/" target="_blank"><i class="fa fa-facebook fa-3x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="text-center" style="color: #fff">© 1436 h Drouss -Plateforme de lecture et de téléchargement sur la bibliographie mouride | Version beta 3.1.</p>
+                    <a href="http://www.linkreferencement.fr/" style="display:inline-block;width:1px;height: 1px;margin: 0;padding: 0;color: #1c6589 !important;">referencement sur Google</a>
+                </div>
+            </div>
+        </div>
+    </footer>

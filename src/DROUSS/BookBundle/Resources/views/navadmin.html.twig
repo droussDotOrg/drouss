@@ -1,0 +1,53 @@
+<div class="navbar navbar-default" id="my_navbar_mother">
+            		<div class="container">
+                		<div class="navbar-header">
+                    		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#my_navbar_content">
+                        		<span class="icon-bar"></span>
+                        		<span class="icon-bar"></span>
+                        		<span class="icon-bar"></span>
+                    		</button>
+                    		<a class="navbar-brand visible-xs" href="{{  path('book_home') }}" style="height: 41px;width: 116px;color: white;color: #FFF;font-size: 40px;text-decoration: none;position: relative;top: -8px;" id="brd"><span style="font-family:tw-cen;">DROUSS</span>.<span style="font-family:ange;font-size: 45px;">org</span></a>
+                		</div>
+                <div class="collapse navbar-collapse" id="my_navbar_content">
+                    <ul class="nav navbar-nav">            
+                        <li><a class="{% block active_livre %}{% endblock %}" href="#">Gestion des livres</a></li>
+						<li><a class="{% block active_pub %}{% endblock %}" href="#">Gestion des publications</a></li>
+						<li><a class="{% block active_auteur %}{% endblock %}" href="#">Gestion des des auteurs</a></li>
+                    </ul>
+					
+                    <form class="navbar-form navbar-right visible-xs" method="post"  onsubmit="find(this);return false;">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="">
+                                    <input class="form-control" type="text" name="pattern" id="search" data-provide="typeahead" data-items="4" autocomplete="off" placeholder="votre recherche ici" {{ gbd }}/>
+                                </div>
+                                <span class="input-group-btn">
+                        <button type="submit" class="btn btn-warning" id="rechercher" >
+                            rechercher
+                        </button>
+                        </span>
+                            </div>
+                        </div>
+                    </form>
+					
+					{% if is_granted('ROLE_SUPER_ADMIN') %}
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+						  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							  {{ app.user.username }} <span class="caret"></span></a>
+						  <ul class="dropdown-menu">
+							<li><a href="{{ path('fos_user_profile_show') }}">Mon profil</a></li>
+							<li><a href="#">Ajouter un livre</a></li>
+							<li><a href="{{ path('admin_author_new') }}">Ajouter un auteur</a></li>
+							  <li><a href="#">Ajouter une publication</a></li>
+							  <li><a href="#">Créer un articles</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+						  </ul>
+						</li>
+					  </ul>
+					{% endif %}
+					
+                </div>
+            </div>
+        </div>

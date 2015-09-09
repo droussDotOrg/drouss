@@ -1,0 +1,62 @@
+{% extends '::base.html.twig' %}
+
+{% block style %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('Required/style/jquery.dataTables.min.css') }}">
+{% endblock %}
+
+{% block body -%}
+    <h3>La liste de tous les auteurs</h3>
+
+    <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Imagepath</th>
+                <th>Biography</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+				<td><a href="{{ path('admin_author_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+                <td>{{ entity.imagePath }}</td>
+                <td>{{ entity.biography }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_author_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_author_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('admin_author_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}
+
+
+{% block script_start %}
+	{{ parent() }}
+	<script src="{{ asset('Required/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('Required/js/jquery-1.11.3.min.js') }}"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+    		$('#example').DataTable();
+		});
+	</script>
+{% endblock %}
+
+

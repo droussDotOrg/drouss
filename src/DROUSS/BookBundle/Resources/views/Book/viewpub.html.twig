@@ -1,0 +1,149 @@
+{% extends "DROUSSBookBundle::base.html.twig" %}
+
+{% block body %}
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '454337751409366',
+      xfbml      : true,
+      version    : 'v2.3'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+$('#share_button').click(function(e){
+e.preventDefault();
+FB.ui({
+  method: 'feed',
+  link: '',
+  picture: 'http://www.drouss.org/Required/media/couverture/,
+  description: 'Drouss.org | Plateforme de lecture et de téléchargement sur la bibliographie mouride(Khassida pdf)',
+  caption: 'Par : .auteur }}',
+}, function(response){});
+});
+});
+</script>
+    <div class="row livre-p" id="view">
+        <div class="col-md-4 col-sm-6">
+            <div class="text-center"><div id="img-container"><img src="{{ gbd }}/media/couverture/{{ book.getBlanketPath }}"></div>
+
+                <p>
+					
+                  {% if book.GetOnline %} <a href="{{ path('book_online_pub',{'name' : book.getTitle |insertSep}) }}"  id="molise_" class="btn btn-primary btn-xs">Lire en Ligne
+                    </a>{% endif %}
+                    
+
+                </p>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12">
+            <div class="text-center" style="margin-left: 50px;">
+                <div class="row"><h1 class="book_title pull-left" style="color: #1c6589;text-align: left">{{ book.getTitle }}</h1>
+                </div>
+                <div class="row"><p class="pull-left" style="color: rgb(153, 165, 171);">Par :  <span class="grise"><a class="btn btn-link" href="#">{{ book.getAuthor|truncate(27,'.')}}</a></span></div>
+                <div class="row"><p class="pull-left" style="color: rgb(153, 165, 171);">Edition : <span class="grise"><a class="btn btn-link" href="#">{{ book.getEdition}}</a></span></p>
+                </div>
+                <div class="row"><p class="pull-left" style="color: rgb(153, 165, 171);">Langue : <span class="grise"><a class="btn btn-link" href="#">{% for lang in book.getLanguage %} {{ lang.name }} {% endfor %} </a></span></p></div>
+              
+                <div class="row">
+                    <p>
+            
+                    
+
+                </div>
+<div class="row"><p class="pull-left" style="text-align: justify;color: rgb(153, 165, 171);margin-right: 50px;">Taille : <a  style="color: #1B1B1B;text-decoration: none;">
+	{% for f in book.getFormat %}
+	{% set p = gbd ~ '/book/' ~ book.getBookFormatPath(f.getName)  %}
+		{{ p |sizeof }} Mo ({{f.getName}})
+	{% endfor %}
+	;
+	</a></p></div>
+                <div class="row"><p  class="pull-left" style="color: rgb(153, 165, 171);">Telecharger {% for f in book.getFormat %}
+					
+					<a href="{{ gbd }}/book/{{ book.getBookFormatPath(f.getName) }}" download="{{ gbd }}/book/{{ book.getBookFormatPath(f.getName) }}" style="color: white;font-weight: bold;border-radius: 25px;
+background-color: #1c6589;
+width: 60px;"  class="btn btn-link btn-xs">{{ f.getName }}</a> 
+					
+					{% endfor %}
+                    </p></div>
+                
+
+            </div>
+
+        </div>
+       
+    </div>
+     <div class="row">
+       <div class="col-md-12">
+			<div class="tabbable-panel">
+				<div class="tabbable-line">
+					<ul class="nav nav-tabs ">
+						<li class="active">
+							<a href="#tab_default_1" data-toggle="tab">
+							Suggestion de lecture </a>
+						</li>
+						<li>
+							<a href="#tab_default_2" data-toggle="tab">
+							Partager </a>
+						</li>
+						<!--<li>
+							<a href="#tab_default_3" data-toggle="tab">
+							Commentaires </a>
+						</li>-->
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="tab_default_1">
+						  <div class="row">
+						    {% for sugest in sugestes %}
+						    <div class="col-sm-3">
+						    
+                <div class="row">
+                    <p><a href="{{  path('book_view_pub', {'name' : sugest.getTitle |insertSep }) }}"><img src="{{ gbd }}/media/couverture/{{ sugest.getBlanketPath }}" class="center-block" id="sug_img"></a>
+
+                    </p>
+                </div>
+						    </div>
+						    {% endfor %}
+						  </div>
+              
+						</div>
+						<div class="tab-pane" id="tab_default_2">
+						   <div class="social text-center" style="margin-bottom: 20px;">
+<div class="col-xs-4">
+  <a href="https://plus.google.com/share?url=l_ }}/livres.php?id=&hl=.titre }}"
+                       target="_blank"><i class="fa fa-google-plus fa-3x" ></i></a>
+</div>
+                   <div class="col-xs-4">
+                     <a href="http://twitter.com/intent/tweet/?url=l_ }}/livres.php?id=&text=.titre }}&via={via}"
+                       target="_blank"><i class="fa fa-twitter fa-3x"></i></a>
+                     </div> 
+                    
+                    <a  id="share_button" style="cursor: pointer"><i class="fa fa-facebook fa-3x"></i></a>
+                </div>
+						</div>
+						<div class="tab-pane" id="tab_default_3">
+							<div class="account-avatar-mini thumbnail icon-user pull-left" style="height: 50px;"><i class="fa fa-user fa-3x"></i></div><div class="media-body input-icon-container-right"><p><input name="text" class="form-control" placeholder="" value="" style="height: 50px;" type="text"></p><button type="button" class="btn" style="display: none;"><span>Commenter</span></button></div>
+					    <button type="button" class="btn" style="display: inline-block;" id="molise__"><span>Commenter</span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+     </div> <div
+  class="fb-like"
+  data-share="false"
+  data-width="450"
+  data-show-faces="true" href="l_ }}/livres.php?id=">
+</div>
+{% endblock %}

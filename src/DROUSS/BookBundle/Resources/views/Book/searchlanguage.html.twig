@@ -1,0 +1,38 @@
+{% extends "DROUSSBookBundle::base.html.twig" %}
+
+{% block body %}
+
+
+      <h1 class="text-center">"{{ numberRes }}" résultat pour "{{ search_name }}"</h1>
+<div class="list-group">
+
+        <li href="#" class="list-group-item active">
+
+            <span class="glyphicon glyphicon-user"></span> Titre  <span class="badge">Auteur</span>
+
+        </li>
+       {% for r in results %}
+	  <a href="{{  path('book_view', {'name' : r.getTitle |insertSep }) }}" class="list-group-item">
+
+            <span class=""></span> {{ r.getTitle }} <span class="badge" style="background-color:#5CB85C;">{{ r.getAuthor.getName }}</span>
+
+        </a>
+       
+       {% endfor %}
+    </div>
+{% endblock %}
+
+{% block footer%}
+	{% block pagination %}
+        <div class="container text-center">
+            <ul class="pagination ">
+                <li class="disabled"><a href="#come">&laquo;</a></li>
+                {% for page in pages %}
+                    <li><a href="{{ path(app.request.attributes.get('_route'), {'name':app.request.get('name')}) }}?page={{ page }}">{{ page }}</a></li>
+                {% endfor %}
+                <li class="disabled"><a href="#come">&raquo;</a></li>
+            </ul>
+        </div>
+    {% endblock %}
+	{{ parent() }}
+{% endblock %}

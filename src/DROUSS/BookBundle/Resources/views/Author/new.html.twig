@@ -1,0 +1,42 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-lg-6">
+		
+    	<h1>Ajouter un auteur</h1>
+			
+   		{{ form_start(form) }}
+		
+			{{ form_widget(form.name, {'attr':{'class':'form-control','placeholder':'Nom complet de l\'auteur',
+									'required':'required'}}) }}	
+			<br>
+			{{ form_widget(form.file, {'attr':{'class':'form-control','placeholder':'Choisir l\'image de l\'auteur'}}) }}	
+			<br>
+			{{ form_widget(form.biography, {'attr':{'class':'tinymce','data-theme':'bbcode','placeholder':'Biographie de l\'auteur'}}) }}
+			
+			<br>
+			{{ form_widget(form.submit, {'attr':{'class':'btn btn-success','value':'ajouter'}}) }}
+			
+			{{ form_end(form) }}
+			
+			
+		
+		<br>
+        <ul class="list-unstyled">
+			<li>
+				<a class="btn btn-info" href="{{ path('admin_author') }}">
+					Afficher la liste
+				</a>
+			</li>
+		</ul>
+		</div>
+	</div>
+{% endblock %}
+
+{% block nav_bar %}
+	{{ render(controller('DROUSSBookBundle:Admin:nav')) }}
+{% endblock %}
+{% block footer%}
+	
+{% endblock %}

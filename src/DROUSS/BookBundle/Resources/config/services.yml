@@ -1,0 +1,8 @@
+services:
+#    drouss_book.example:
+#        class: DROUSS\BookBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    drouss.twig.drouss_entension:
+        class: DROUSS\BookBundle\Twig\DROUSSExtension
+        tags:
+            - { name: twig.extension }

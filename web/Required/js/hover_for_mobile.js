@@ -1,0 +1,1 @@
+var hoverable=$('.milieu [class*="col-"]:hover');hoverable.on("touchstart",function(e){$(this).trigger("hover");});hoverable.on("touchend",function(e){$(this).trigger("blur");});

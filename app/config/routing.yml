@@ -1,0 +1,11 @@
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+drouss_user:
+    resource: "@DROUSSUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+drouss_book:
+    resource: "@DROUSSBookBundle/Resources/config/routing.yml"
+    prefix:   /
+

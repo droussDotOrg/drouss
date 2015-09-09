@@ -1,0 +1,65 @@
+book_home:
+    path: /
+    defaults: { _controller: DROUSSBookBundle:Book:index }
+
+book_home_default:
+    path: /book
+    defaults: { _controller: DROUSSBookBundle:Book:index }
+
+book_view:
+    path: /book/{name}
+    defaults: { _controller: DROUSSBookBundle:Book:view }
+    requirements:
+        id: \d{1,}
+
+book_list:
+    path: /book/category/{category}
+    defaults: {_controller:DROUSSBookBundle:Book:list}
+
+book_list_publication:
+    path: /book/category2/publication
+    defaults: {_controller:DROUSSBookBundle:Book:listpublication}
+
+book_quran:
+    path: /book/category2/quran
+    defaults: {_controller:DROUSSBookBundle:Book:quran}
+
+book_list_author:
+    path: /book/list/author
+    defaults: {_controller:DROUSSBookBundle:Book:listauthor}
+
+book_view_author:
+    path: /book/author/{name}
+    defaults: {_controller:DROUSSBookBundle:Book:viewauthor}
+
+book_view_pub:
+    path: /book/pub/{name}
+    defaults: {_controller:DROUSSBookBundle:Book:viewpub}
+    requirements:
+        name: .{0,}
+
+book_search_science:
+    path: /book/science/{name}
+    defaults: {_controller:DROUSSBookBundle:Book:searchscience}
+
+book_search_language:
+    path: /book/language/{name}
+    defaults: {_controller:DROUSSBookBundle:Book:searchlanguage}
+
+book_online_book:
+    path: /book/online/{name}
+    defaults: {_controller:DROUSSBookBundle:Book:onlinebook}
+book_online_pub:
+    path: /pub/online/{name}
+    defaults: {_controller:DROUSSBookBundle:Book:onlinepub}
+
+book_online_bookfull:
+    path: /book/onlinef/{name}
+    defaults: {_controller:DROUSSBookBundle:Book:onlinebookf}
+book_online_pubfull:
+    path: /pub/onlinef/{name}
+    defaults: {_controller:DROUSSBookBundle:Book:onlinepubf}
+
+book_search:
+    path: /book/search/{name}
+    defaults: {_controller:DROUSSBookBundle:Book:search}

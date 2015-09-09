@@ -1,0 +1,30 @@
+admin_author:
+    path:     /
+    defaults: { _controller: "DROUSSBookBundle:Author:index" }
+
+admin_author_show:
+    path:     /{id}/show
+    defaults: { _controller: "DROUSSBookBundle:Author:show" }
+
+admin_author_new:
+    path:     /new
+    defaults: { _controller: "DROUSSBookBundle:Author:new" }
+
+admin_author_create:
+    path:     /create
+    defaults: { _controller: "DROUSSBookBundle:Author:create" }
+    requirements: { _method: post }
+
+admin_author_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DROUSSBookBundle:Author:edit" }
+
+admin_author_update:
+    path:     /{id}/update
+    defaults: { _controller: "DROUSSBookBundle:Author:update" }
+    requirements: { _method: post|put }
+
+admin_author_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DROUSSBookBundle:Author:delete" }
+    requirements: { _method: post|delete }

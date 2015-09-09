@@ -1,0 +1,17 @@
+{% extends "::base.html.twig" %}
+
+{% block head_ %}	
+	{{ parent() }}
+	<form class="pull-right" method="post"  onsubmit="find(this);return false;">
+    <div class="form-group" style="width: 305px;">
+        <div class="input-group">
+            <div class="">
+                <input class="form-control " type="text" name="pattern" id="search" data-provide="typeahead" data-items="4" autocomplete="off" placeholder="votre recherche ici" required/>
+            </div>
+            <span class="input-group-btn">
+             	<button type="submit" class="btn btn-warning " id="rechercher" >rechercher</button>
+             </span>
+        </div>
+    </div>
+</form>
+{% endblock %}

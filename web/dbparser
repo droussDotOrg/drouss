@@ -1,0 +1,219 @@
+/*
+foreach(file("author.moussa") as $line)
+{
+    $lin = "return array".substr($line,0, strlen($line) - 3).";";
+    $f = eval($lin);
+    $a = new Author();
+    $a->setName($f[1]);
+    $a->setBiography($f[2]);
+    $img = substr($f[4],17);
+
+    if( $img != "" )
+        $a->setImagePath($img);
+    $em = $this->getDoctrine()->getManager();
+
+
+    // Étape 1 : On « persiste » l'entité
+
+    $em->persist($a);
+
+
+    // Étape 2 : On « flush » tout ce qui a été persisté avant
+
+    $em->flush();
+}*/
+
+/*foreach(file("publication.moussa") as $line) {
+            $lin = "return array".substr($line,0, strlen($line) - 3).";";
+            echo $lin;
+            $f = eval($lin);
+            $b = new Publication();
+            $b->setTitle($f[1]);
+            $b->setSubTitle($f[2]);
+            $b->setAuthor($f[3]);
+            $b->setEdition($f[6]);
+            if($f[5] != "couvParDefaut.jpg")
+                $b->setBlanketPath($f[5]);
+            if($f[11] != "")
+                $b->setOnline($f[11]);
+
+            $for = $this->getDoctrine()->getRepository("DROUSSBookBundle:Format")->find(1);
+			$b->setPubFormatPath('pdf', $f[8]);
+            $b->addFormat($for);
+
+            if($f[7] != "")
+            {
+                if(intval($f[7]) != 5 && intval($f[7]) != 6)
+                {
+                    $l = $this->getDoctrine()->getRepository("DROUSSBookBundle:Language")->find(intval($f[7]));
+                    $b->addLanguage($l);
+
+                }
+                else
+                {
+                    if(intval($f[7]) == 5)
+                    {
+                        $l1 = $this->getDoctrine()->getRepository("DROUSSBookBundle:Language")->find(3);
+                        $b->addLanguage($l1);
+
+                        $l2 = $this->getDoctrine()->getRepository("DROUSSBookBundle:Language")->find(1);
+                        $b->addLanguage($l2);
+                    }
+                    else
+                    {
+                        $l1 = $this->getDoctrine()->getRepository("DROUSSBookBundle:Language")->find(3);
+                        $b->addLanguage($l1);
+
+                        $l2 = $this->getDoctrine()->getRepository("DROUSSBookBundle:Language")->find(2);
+                        $b->addLanguage($l2);
+                    }
+                }
+            }
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($b);
+
+            $em->flush();
+			//break;
+        }*/
+		/**/
+		/**/
+		/**/
+        /**/
+
+        /*
+*/
+        /*foreach(file("author.moussa") as $line)
+        {
+            $lin = "return array".substr($line,0, strlen($line) - 3).";";
+            $f = eval($lin);
+            $a = new Author();
+
+            $a->setName($f[1]);
+            $a->setBiography($f[2]);
+            if($f[4] != "")
+                $a->setImagePath($f[4]);
+            $em = $this->getDoctrine()->getManager();
+
+
+            // Étape 1 : On « persiste » l'entité
+
+            $em->persist($a);
+
+
+            // Étape 2 : On « flush » tout ce qui a été persisté avant
+
+            $em->flush();
+        }*/
+
+/*foreach(file("book.moussa") as $line)
+        {
+			
+            $em = $this->getDoctrine()->getManager();
+            $lin = "return array".substr($line,0, strlen($line) - 2).";";
+			echo $lin;
+            $f = eval($lin);echo gettype($f);
+			print_r($f);
+            $b = new Book();
+            $b->setTitle($f[1]);
+			
+            $b->setSubTitle($f[2]);
+            $b->setExtract($f[7]);
+            if($f[8] != "couvParDefaut.jpg")
+                $b->setBlanketPath($f[8]);
+			
+            if($f[21] != "")	
+				{
+				echo $f[21];$b->setOnline($f[21]);
+			}
+                
+
+            $cat = $this->getDoctrine()->getRepository("DROUSSBookBundle:Category")->find(intval($f[4]));
+            $b->setCategory($cat);
+		
+
+            $au = $this->getDoctrine()->getRepository("DROUSSBookBundle:Author")->find(intval($f[14]));
+            $b->setAuthor($au);
+
+            $s = $f[5];
+            if($s != "")
+            {
+                if(intval($s) != 7)
+                {
+                    $sc = $this->getDoctrine()->getRepository("DROUSSBookBundle:Science")->find(intval($s));
+                    $b->addScience($sc);
+                }
+                else
+                {
+                    $sc1 = $this->getDoctrine()->getRepository("DROUSSBookBundle:Science")->find(1);
+                    $b->addScience($sc1);
+
+                    $sc2 = $this->getDoctrine()->getRepository("DROUSSBookBundle:Science")->find(4);
+                    $b->addScience($sc2);
+
+                    $sc3 = $this->getDoctrine()->getRepository("DROUSSBookBundle:Science")->find(5);
+                    $b->addScience($sc3);
+                }
+            }
+
+            $m = $f[6];
+            if($m != "" && $m != "NULL" && $m != "Null" && $m != "en attente")
+            {
+                echo $m;
+                $m = $this->getDoctrine()->getRepository("DROUSSBookBundle:Month")->find(intval($m));
+              if($m != null)
+                    $b->addMonth($m);
+
+            }
+
+            $l = $f[10];
+            if($l != "")
+            {
+                if(intval($l) != 5)
+                {//echo $l;
+                    $l = $this->getDoctrine()->getRepository("DROUSSBookBundle:Language")->find(intval($l));
+
+                    $b->addLanguage($l);
+					
+                }
+                else
+                {
+                    $l1 = $this->getDoctrine()->getRepository("DROUSSBookBundle:Language")->find(2);
+                    $b->addLanguage($l1);
+
+                    $l2 = $this->getDoctrine()->getRepository("DROUSSBookBundle:Language")->find(1);
+                    $b->addLanguage($l2);
+                }
+
+            }
+
+            $fr = $f[11];
+            if($fr != "")
+            {
+
+                    $fr = $this->getDoctrine()->getRepository("DROUSSBookBundle:Format")->find(1);
+					//$fr->setFormatBookPath($f[11]);
+				$b->setBookFormatPath('pdf',$f[11]);
+                    $b->addFormat($fr);
+					
+
+                if($f[12] != "")
+                {
+
+                    $fr2 = $this->getDoctrine()->getRepository("DROUSSBookBundle:Format")->find(2);
+					$b->setBookFormatPath('epub',$f[12]);
+					                    $b->addFormat($fr2);
+                }
+
+            }
+
+
+
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($b);
+
+            $em->flush();
+	//break;
+        }
+		
+		*/

@@ -1,0 +1,11 @@
+drouss_book:
+    resource: "@DROUSSBookBundle/Resources/config/routing/book.yml"
+    prefix:   /
+
+drouss_book_admin_author:
+    resource: "@DROUSSBookBundle/Resources/config/routing/author.yml"
+    prefix:   /admin/author
+
+drouss_mail:
+    path: /email
+    defaults: { _controller: DROUSSBookBundle:Book:email }
