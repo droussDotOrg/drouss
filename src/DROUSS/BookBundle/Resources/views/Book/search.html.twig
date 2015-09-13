@@ -1,10 +1,20 @@
 {% extends "DROUSSBookBundle::base.html.twig" %}
 
 {% block body %}
- <div class="row search-p">
+<h1 class="text-center">Resultat recherche  pour "{{ search }}"</h1>
+ <div class="list-group">
+
+        <li href="#" class="list-group-item active">
+
+            <span class="glyphicon glyphicon-book"></span> Titre  
+
+        </li>
         {% for res in book %}
-            <div class="col-lg-6 col-xs-12"><a href="{{  path('book_view', {'name' : res.title  |insertSep}) }}"
-                                              class="btn btn-link btn-xs">{{ res.title }}</a></div>{#  on utilise res.title au lieu de res.getTitle() puis createquery renvoit un simple array apres getQuerry #}
+             <a href="{{  path('book_view', {'name' : res.title |insertSep }) }}" class="list-group-item">
+
+            <span class=""></span> {{ res.title }} 
+
+        </a>{#  on utilise res.title au lieu de res.getTitle() puis createquery renvoit un simple array apres getQuerry #}
 	 
         {% else %}
             <div class="row"><h1 style="margin-left: 10%;">Pas De Resultat Trouver</h1></div>

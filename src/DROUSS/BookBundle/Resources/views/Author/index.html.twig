@@ -11,25 +11,25 @@
     <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Imagepath</th>
-                <th>Biography</th>
+				<th>Image de l'auteur</th>
+                <th>Nom de l'auteur</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
+				<td>
+					<img class="img-circle" with="50" height="50" src="../web/Required/media/images/auteurs/{{ entity.imagePath }}" alt="">
+				</td>
 				<td><a href="{{ path('admin_author_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
-                <td>{{ entity.imagePath }}</td>
-                <td>{{ entity.biography }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('admin_author_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('admin_author_show', { 'id': entity.id }) }}">Afficher</a>
                     </li>
                     <li>
-                        <a href="{{ path('admin_author_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('admin_author_edit', { 'id': entity.id }) }}">Modifier</a>
                     </li>
                 </ul>
                 </td>

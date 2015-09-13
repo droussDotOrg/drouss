@@ -1,3 +1,7 @@
+:focus {
+outline: none !important;;
+}
+
 #l_a {
     color: rgb(51, 51, 51);
     font-family: candara;
@@ -137,7 +141,9 @@ body {
     font-family: 'optimaFont';
 }
 
-
+#mainer{
+	background-image: url("/web/Required/media/boxed-bg2.jpg");
+}
 
 #mother {
     box-shadow: 0 0 35px rgba(0,0,0,0.4);
@@ -217,7 +223,7 @@ body {
 }
 
 #time_bar {
-    margin-bottom: 50px;
+    
 }
 
 #view {
@@ -983,3 +989,4 @@ color:#000;
 #magal{
 	background-image: url('/web/Required/media/boxed-bg.png');
 }
+

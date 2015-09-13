@@ -33,6 +33,40 @@ class BookController extends Controller
 		return $this->getDoctrine()->getRepository("DROUSSBookBundle:Category")->findBy([], ['order' => 'asc'],6);
 	}
 	
+	public function trace()
+	{
+	 $dir = scandir('stat/');
+  $nb_visites_total = 0;
+  foreach($dir as $fil)
+  {
+    if (strpos($fil,'nbr') !== false)
+    {
+      $nb_visites_total += file_get_contents('stat/'.$fil);
+    }
+  }
+//}
+file_put_contents('stat/total_page_vue.txt', $nb_visites_total, LOCK_EX);
+file_put_contents('stat/last.txt', $nb_visites_total, LOCK_EX);
+
+	
+	{
+    $file = 'stat/nbr_page_vue_le_'.date('d-m-y').'.txt';
+    if(!file_exists($file))
+    {
+      
+        $c = fopen($file, 'w');
+        fclose($c);
+        file_put_contents($file, '0', LOCK_EX);
+    }
+
+    $nb_visites_j = file_get_contents($file);
+    $nb_visites_j++;
+    file_put_contents($file, $nb_visites_j, LOCK_EX);
+}
+		$t = $nb_visites_total;
+		$d = $nb_visites_j;
+		return [$d,$t];
+	}
 	public function getDynamicScience()
 	{
 		return $this->getDoctrine()->getRepository("DROUSSBookBundle:Science")->findAll();
@@ -46,7 +80,7 @@ class BookController extends Controller
 	public function searchAction($name)
 	{
 
-	
+	$this->trace();
 		//$book = $this->getDoctrine()->getRepository("DROUSSBookBundle:Publication")->findOneBy(['title' => $name_]);
 		$book = $this->getDoctrine()->getRepository("DROUSSBookBundle:Book")->fff($name);
 		$dynamicMenu = $this->getDynamicMenu(); 		
@@ -59,7 +93,8 @@ class BookController extends Controller
 					   'dynamicMenu'   => $dynamicMenu,
 					   'languages' => $dynamicLanguage,
 					   'sciences'      => $sciences,
-						'book'         => $book
+						'book'         => $book,
+			'search' => $name
 
 		];
         return $this->render('DROUSSBookBundle:Book:search.html.twig', $dicTionary);
@@ -67,6 +102,7 @@ class BookController extends Controller
 	
 	public function emailAction(Request $request)
 	{
+		
 		$b = NULL;
 		
 		if ($request->getMethod() == 'POST') {
@@ -93,7 +129,7 @@ class BookController extends Controller
 			{
 			$this->get('session')->getFlashBag()->add(
             'danger',
-            'Votre message n\'a pas été envoyer. Vueillez reéssayer'
+            'Votre message n\'a pas été envoyer. Vueillez reéssayer plus tard Ou nous Contacter a l\'adresse suivante: drouss.org@gmail.com'
         );
 		}
 		return $this->redirect($this->generateUrl('book_home'));
@@ -102,6 +138,7 @@ class BookController extends Controller
 
 	public function onlinepubAction($name)
 	{
+		$this->trace();
 		$name_ = str_replace('+',' ', $name);
 		
 		$book = $this->getDoctrine()->getRepository("DROUSSBookBundle:Publication")->findOneBy(['title' => $name_]);
@@ -121,39 +158,10 @@ class BookController extends Controller
         return $this->render('DROUSSBookBundle:Book:onlinepub.html.twig', $dicTionary);
 	}
 	
-	public function onlinebookfAction($name)
-	{
-		$name_ = str_replace('+',' ', $name);
-		
-		$book = $this->getDoctrine()->getRepository("DROUSSBookBundle:Book")->findOneBy(['title' => $name_]);
-		if(!$book)
-			 throw $this->createNotFoundException("Le livre n'existe pas");
-		
-		$dicTionary = [
-						'book'         => $book
-
-		];
-        return $this->render('DROUSSBookBundle:Book:onlinebookfull.html.twig', $dicTionary);
-	}
-	
-	public function onlinepubfAction($name)
-	{
-		$name_ = str_replace('+',' ', $name);
-		
-		$book = $this->getDoctrine()->getRepository("DROUSSBookBundle:Publication")->findOneBy(['title' => $name_]);
-		if(!$book)
-			 throw $this->createNotFoundException("Le livre n'existe pas");
-		
-		
-		$dicTionary = [
-						'pub'         => $book
-
-		];
-        return $this->render('DROUSSBookBundle:Book:onlinepubfull.html.twig', $dicTionary);
-	}
 	
 	public function onlineBookAction($name)
 	{
+		$this->trace();
 		$name_ = str_replace('+',' ', $name);
 		
 		$book = $this->getDoctrine()->getRepository("DROUSSBookBundle:Book")->findOneBy(['title' => $name_]);
@@ -179,6 +187,8 @@ class BookController extends Controller
     {
 		$rep = $this->getDoctrine()->getRepository("DROUSSBookBundle:Book");
 		$bookForward = $rep->findBy(['forward' => 1, 'status' => 1]);
+		$count = count($rep->findBy(['status' => 1]));
+		$count += count($this->getDoctrine()->getRepository("DROUSSBookBundle:Publication")->findAll());
 		$tableBook = $rep->findBy(['status' => 1], ['id' => 'desc'],16, 0);
 		$tableBook = array_chunk($tableBook,4,true);
 		$bookForMobile = $rep->find(rand(150,250));
@@ -186,14 +196,18 @@ class BookController extends Controller
 		$dynamicLanguage = $this->getDynamicLanguage();
 		
 		$sciences = $this->getDynamicScience();
-		
+		$stat = $this->trace();
+		$dayPage = $stat[0];
+		$totalPage = $stat[1];
 		$dicTionary = ['bookForward'    =>   $bookForward,
 					   'bookForMobile'  => $bookForMobile,
 					   'tableBook'      =>     $tableBook,
 					   'dynamicMenu'   => $dynamicMenu,
 					   'languages' => $dynamicLanguage,
 					   'sciences'      => $sciences,
-					  
+					  'count' => $count,
+					   'totalPage' => $totalPage,
+					   'dayPage' => $dayPage
 		];
         return $this->render('DROUSSBookBundle:Book:index.html.twig', $dicTionary);
     }
@@ -207,7 +221,7 @@ class BookController extends Controller
 		
 		$author = $this->getDoctrine()->getRepository("DROUSSBookBundle:Author")->findOneBy(['name' => $name_]);
 		if(!$author)
-			 throw $this->createNotFoundException("'auteur n'existe pas");
+			 throw $this->createNotFoundException("'auteur n'existe pas'");
 		$sciences = $this->getDynamicScience();
 		$dicTionary = ['author' => $author,
 					   'dynamicMenu'   => $dynamicMenu,
@@ -219,6 +233,7 @@ class BookController extends Controller
 	
 	public function searchscienceAction(Request $request, $name)
 	{
+		$this->trace();
 		$science =  $this->getDoctrine()->getRepository("DROUSSBookBundle:Science")->findOneBy(['name' => $name]);
 		if(!$science)
 			 throw $this->createNotFoundException("Le livre n'existe pas");
@@ -258,6 +273,7 @@ class BookController extends Controller
 	
 	public function searchlanguageAction(Request $request, $name)
 	{
+		$this->trace();
 		$science =  $this->getDoctrine()->getRepository("DROUSSBookBundle:Language")->findOneBy(['name' => $name]);
 		if(!$science)
 			 throw $this->createNotFoundException("Le livre n'existe pas");
@@ -297,6 +313,7 @@ class BookController extends Controller
 	
 	public function viewpubAction($name)
 	{
+		$this->trace();
 		$name_ = str_replace('+',' ', $name);
 		$book = $this->getDoctrine()->getRepository("DROUSSBookBundle:Publication")->findOneBy(['title' => $name_]);
 		if(!$book)
@@ -317,7 +334,8 @@ class BookController extends Controller
 	
 	public function listauthorAction()
 	{
-		$author = $this->getDoctrine()->getRepository("DROUSSBookBundle:Author")->findBy([],['name' => 'asc']);
+		$this->trace();
+		$author = $this->getDoctrine()->getRepository("DROUSSBookBundle:Author")->findBy(['Oumma' => false],['name' => 'asc']);
 		$sciences = $this->getDynamicScience();
 		$dynamicMenu = $this->getDynamicMenu(); 		
 		$dynamicLanguage = $this->getDynamicLanguage();
@@ -330,8 +348,67 @@ class BookController extends Controller
         return $this->render('DROUSSBookBundle:Book:listauthor.html.twig', $dicTionary);
 	}
 	
+	public function oummaAction(Request $request)
+	{
+		$this->trace();
+				$cat = $this->getDoctrine()->getRepository("DROUSSBookBundle:Category")->findOneBy(['categoryName' => 'Umma']);
+		if(!$cat)
+			 throw $this->createNotFoundException("Le livre n'existe pas");
+		$rep = $this->getDoctrine()->getRepository("DROUSSBookBundle:Book");
+		
+		$numberResPerPage = 16;
+		$numberPageForResult = ceil(count($rep->findBy(['status' => 1, 'category' => $cat->getId()])) /$numberResPerPage);
+		$t_p = array();
+		for($i = 0; $i < $numberPageForResult; $i++)
+		{
+    		$t_p[$i] = $i + 1;
+		}
+		$numberPageForResult = $t_p;
+		$page = $request->query->get('page');
+		$currentPage = isset($page) ? $page : 1;
+		$currentPage = ($currentPage >= 1) ? $currentPage : 1;
+		$currentPage = ($currentPage > $numberPageForResult) ? $numberPageForResult : $currentPage;
+		$firstInPage = ($currentPage - 1) * $numberResPerPage;
+		$lastInPage = $numberResPerPage;
+		
+		
+		
+		$sciences = $this->getDynamicScience();
+		$dynamicMenu = $this->getDynamicMenu(); 		
+		$dynamicLanguage = $this->getDynamicLanguage();
+		
+		
+		$tableBook = $rep->findBy(['status' => 1, 'category' => $cat->getId()], ['id' => 'desc'], $lastInPage, $firstInPage);
+		$tableBook = array_chunk($tableBook,4,true);
+		
+		$dicTionary = ['tableBook' => $tableBook,
+					  'dynamicMenu'   => $dynamicMenu,
+					   'languages' => $dynamicLanguage,
+					  'pages' => $numberPageForResult,
+					   'sciences'      => $sciences,
+		];
+		return $this->render('DROUSSBookBundle:Book:oumma.html.twig', $dicTionary);
+	}
+	
+	public function womanAction()
+	{
+		$this->trace();
+		//$author = $this->getDoctrine()->getRepository("DROUSSBookBundle:Author")->findBy(['Oumma' => false],['name' => 'asc']);
+		$sciences = $this->getDynamicScience();
+		$dynamicMenu = $this->getDynamicMenu(); 		
+		$dynamicLanguage = $this->getDynamicLanguage();
+		
+		$dicTionary = [//'author' => $author,
+					   'dynamicMenu'   => $dynamicMenu,
+					   'languages' => $dynamicLanguage,
+					   'sciences'      => $sciences,
+		];
+        return $this->render('DROUSSBookBundle:Book:woman.html.twig', $dicTionary);
+	}
+	
 	public function viewAction($name)
 	{
+		$this->trace();
 		$name_ = str_replace('+',' ', $name);
 		$rep = $this->getDoctrine()->getRepository("DROUSSBookBundle:Book");
 		$book = $rep->findOneBy(['title' => $name_]);
@@ -356,6 +433,7 @@ class BookController extends Controller
 	
 	public function quranAction()
 	{
+		$this->trace();
 		$dynamicMenu = $this->getDynamicMenu(); 		
 		$dynamicLanguage = $this->getDynamicLanguage();
 		$sciences = $this->getDynamicScience();
@@ -369,6 +447,7 @@ class BookController extends Controller
 	
 	public function listpublicationAction(Request $request)
 	{
+		$this->trace();
 		$rep = $this->getDoctrine()->getRepository("DROUSSBookBundle:Publication");
 		$numberResPerPage = 16;
 		$numberPageForResult = ceil(count($rep->findAll()) /$numberResPerPage);
@@ -402,6 +481,7 @@ class BookController extends Controller
 	
 	public function listAction(Request $request, $category)
 	{
+		$this->trace();
 		$cat = $this->getDoctrine()->getRepository("DROUSSBookBundle:Category")->findOneBy(['categoryName' => $category]);
 		if(!$cat)
 			 throw $this->createNotFoundException("Le livre n'existe pas");

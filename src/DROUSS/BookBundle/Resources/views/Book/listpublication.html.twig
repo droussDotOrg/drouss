@@ -1,5 +1,11 @@
 {% extends "DROUSSBookBundle::base.html.twig" %}
-
+{% block cumtom %}
+    <style>
+      #mother {
+   		padding-top: 19px;
+	}
+    </style>
+{% endblock %}
 {% block body %}
 	<div class="row milieu">
         {% for row in tableBook %}
@@ -23,21 +29,21 @@
     font-weight: 400;">{{ book.getTitle |truncate(30,'')}}</a></div>
 								</div>
 								<div class="col-lg-12">
-									 <div class="">Ecrit par : <span class="grise"><a class="" href="#">{{ book.getAuthor}}</a></span></div>
+									 <div class="">Ecrit par : <span class="grise"><a class="" >{{ book.getAuthor}}</a></span></div>
                       
 								</div>
 								<div class="col-lg-12">
-									<div>Edition : <span class="grise"><a class="" href="#">{{ book.getEdition}}</a></span></div>
+									<div>Edition : <span class="grise"><a class="" >{{ book.getEdition}}</a></span></div>
                          
 								</div>
 								<div class="col-lg-12">
-									<div>Langue : <span class="grise"><a class="" href="#">{% for lang in book.getLanguage %} {{ lang.name }} {% endfor %} </a></span></div>
+									<div>Langue : <span class="grise"><a class="" >{% for lang in book.getLanguage %} {{ lang.name }} {% endfor %} </a></span></div>
                        
 								</div>
 								<div class="col-lg-12">
 									<div>
 						  Format : <span class="grise">
-						  <a class="" href="#">
+						  <a class="" >
 							{% for f in book.getFormat %} {{ f.name }} {% endfor %}
 						  </a>
 						  </span>

@@ -14,5 +14,9 @@ class AdminController extends Controller
 {
 	public function navAction(){
 		return $this->render('DROUSSBookBundle::navadmin.html.twig');
-	}	
+	}
+	
+	public function footerAction(){
+		return $this->render('DROUSSBookBundle::footeradmin.html.twig');
+	}
 }

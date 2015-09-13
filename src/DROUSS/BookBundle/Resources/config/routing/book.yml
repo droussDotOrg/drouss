@@ -53,13 +53,14 @@ book_online_pub:
     path: /pub/online/{name}
     defaults: {_controller:DROUSSBookBundle:Book:onlinepub}
 
-book_online_bookfull:
-    path: /book/onlinef/{name}
-    defaults: {_controller:DROUSSBookBundle:Book:onlinebookf}
-book_online_pubfull:
-    path: /pub/onlinef/{name}
-    defaults: {_controller:DROUSSBookBundle:Book:onlinepubf}
-
 book_search:
     path: /book/search/{name}
     defaults: {_controller:DROUSSBookBundle:Book:search}
+
+book_oumma:
+    path: /oumma
+    defaults: {_controller:DROUSSBookBundle:Book:oumma}
+
+book_woman:
+    path: /woman
+    defaults: {_controller:DROUSSBookBundle:Book:woman}

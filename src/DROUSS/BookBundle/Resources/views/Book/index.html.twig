@@ -1,6 +1,7 @@
 {% extends "DROUSSBookBundle::base.html.twig" %}
 
 {% block body %}
+
 {% for flashMessage in app.session.flashbag.get('sucess') %}
 <script>
 
@@ -27,7 +28,11 @@
 
 	</script>
 {% endfor %}
+
 {% include 'DROUSSBookBundle:Book:Homehead.html.twig' %}
+<div class="row " id="time_bar">
+                    <a class="btn btn-primary btn-block"> <span><span class=""> Drouss.org c'est plus de {{ count }} PDF et EPUB et plus de {{ totalPage }} pages visitées dont {{ dayPage }} aujourd'hui</span></span></a>
+                </div>
 {% include 'DROUSSBookBundle:Book:countdown.html.twig' %}
 	{% block  lateral_gauche %}
     	<div class="col-sm-3 lateral_gauche">

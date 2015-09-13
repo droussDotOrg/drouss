@@ -1,205 +1,245 @@
+
+
 {% extends "DROUSSBookBundle::base.html.twig" %}
-
 {% block body %}
-	
-	 <div class="row">
-        <div class="col-sm-4">
-            <img src="{{ gbd }}/media/coran.jpg" class="center-block">
-        </div>
-        <div class="col-sm-8">
-            <div class="row">
-                <hr style="border-color: #59B9FF;">
-                <h1 class="text-primary text-center">Caligraphie</h1>
-                <div>
-                    <a class="btn-link btn-xs" data-toggle="modal" data-target="#smk" href="#">Soxna Maïmûnatu Mbacké Kabîr</a>
-
-                    <div class="modal fade" id="smk">
-
-                        <div class="modal-dialog ">
-
-                            <div class="modal-content " style="background-color: rgb(255, 255, 255) ! important;">
-<button type="button" class="close" data-dismiss="modal">x</button>
-<hr>
-                                &nbsp;&nbsp;&nbsp;<a href="view.php?id=135" target="_blank" class="btn btn-xs btn-success"> Lire en Ligne </a>  <a href="Required/pdf/kamil_soxna_may_kabir_debut.pdf" class="btn btn-xs btn-danger">Télécharger Pdf</a><br>
-                                  <hr>
-                                &nbsp;&nbsp;&nbsp;<a href="#"> Extrait Coran (Partie 2)) Bientot Disponible</a><br><hr>
-                            </div>
-
+<div class="row">
+   <div class="col-sm-4">
+      <img src="{{ gbd }}/media/coran.jpg" class="center-block">
+   </div>
+   <div class="col-sm-8">
+      <div class="row">
+         <hr style="border-color: #59B9FF;">
+         <h1 class="text-primary text-center">Caligraphie</h1>
+         <div>
+            <a class="btn-link btn-xs" data-toggle="modal" data-target="#smk" href="#">Soxna Maïmûnatu Mbacké Kabîr</a>
+            <div class="modal modal-message modal-info fade" id="smk" style="display: none;" aria-hidden="true">
+               <div class="modal-dialog modal-sm">
+                  <div class="modal-content " style="">
+                     <div class="modal-body">
+                        <div class="modal-header">
+                           <i class="fa fa-file" style="color:#57B5E3 !important"></i>
                         </div>
-
-                    </div>
-                </div>
-                <div>
-                    <a class="btn-link btn-xs" data-toggle="modal" data-target="#cx" href="#">Cheikhoul xadim (Bientot)</a>
-
-                    <div class="modal fade" id="cx">
-
-                        <div class="modal-dialog ">
-
-                            <div class="modal-content " style="background-color: rgb(255, 255, 255) ! important;">
-<button type="button" class="close" data-dismiss="modal">x</button>
-                              <p class="text-center">Bientot Disponible </p>
-
-                            </div>
-
+                        <div class="modal-title">Soxna Maïmûnatu Mbacké Kabîr </div>
+                        <div class="modal-body">
+                           <a href="{{ path('book_online_book',{'name' : 'Extrait+Coran+(Partie+1)'}) }}" target="_blank" class="btn btn-xs btn-success"> Lire en Ligne </a>  <a href="Required/pdf/kamil_soxna_may_kabir_debut.pdf" class="btn btn-xs btn-danger">Télécharger Pdf</a><br>
+                           <hr>
                         </div>
-
-                    </div>
-                </div>
-                <div>
-                    <a class="btn-link btn-xs" data-toggle="modal" data-target="#sfm" href="#">Serigne Fallou Macke (Bientot)</a>
-
-                    <div class="modal fade" id="sfm">
-
-                        <div class="modal-dialog ">
-
-                            <div class="modal-content " style="background-color: rgb(255, 255, 255) ! important;">
-<button type="button" class="close" data-dismiss="modal">x</button>
-                                  <p class="text-center">Bientot Disponible </p>
-
-                            </div>
-
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
                         </div>
-
-                    </div>
-                </div>
-                <div>
-                    <a class="btn-link btn-xs" data-toggle="modal" data-target="#sah" href="#">Serigne Abdoul Ahad et Serigne Hamzatou Mbacké (Bientot)</a>
-
-                    <div class="modal fade" id="sah">
-
-                        <div class="modal-dialog ">
-
-                            <div class="modal-content " style="background-color: rgb(255, 255, 255) ! important;">
-<button type="button" class="close" data-dismiss="modal">x</button>
-                               <p class="text-center">Bientot Disponible </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                <div>
-                    <a class="btn-link btn-xs" data-toggle="modal" data-target="#dm" href="#">Daroul Minan <span class="text-muted">(Bientot)</span></a>
-
-                    <div class="modal fade" id="dm">
-
-                        <div class="modal-dialog ">
-
-                            <div class="modal-content " style="background-color: rgb(255, 255, 255) ! important;">
-<button type="button" class="close" data-dismiss="modal">x</button>
-                                <p class="text-center">Bientot Disponible </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                
+                     </div>
+                  </div>
+               </div>
             </div>
-
-            <div class="row">
-                <hr style="border-color: #59B9FF;">
-                <h1 class="text-primary text-center">Hilmul Quran</h1>
-                <div>
-                    <a class="btn-link btn-xs" data-toggle="modal" data-target="#tamd" href="#">Tafsirul Qur-ân Serigne Mouhammadou Dème</a>
-
-                    <div class="modal fade" id="tamd">
-
-                        <div class="modal-dialog ">
-
-                            <div class="modal-content " style="background-color: rgb(255, 255, 255) ! important;">
-<button type="button" class="close" data-dismiss="modal">x</button><hr>
-                                &nbsp;&nbsp;&nbsp;<a href="view.php?id=8"  target="_blank" class="btn btn-xs btn-success"> Mawdiru Zaman Fi Tafsirul Qur-an Fatiha</a>
-                                <a  target="_blank" class="btn btn-xs btn-danger" href="Required/pdf/TafsirFatiha.pdf">Telecharger Pdf</a>
-                                <br>
-                                <hr>
-                                &nbsp;&nbsp;&nbsp;<a href="view.php?id=68" target="_blank" class="btn btn-xs btn-success"> Mawdiru Zaman Fi Tafsirul Qur-an N°58</a>
-                                <a  target="_blank" class="btn btn-xs btn-danger" href="Required/pdf/Tafsir58.pdf">Telecharger Pdf</a><br>
-                                <hr>
-                                &nbsp;&nbsp;&nbsp;<a href="view.php?id=69" target="_blank" class="btn btn-xs btn-success"> Mawdiru Zaman Fi Tafsirul Qur-an N°59</a>
-                                <a  target="_blank" class="btn btn-xs btn-danger" href="Required/pdf/Tafsir59.pdf">Telecharger Pdf</a><br>
-                                <hr>
-                                &nbsp;&nbsp;&nbsp;<a href="view.php?id=5" target="_blank" class="btn btn-xs btn-success"> Mawdiru Zaman Fi Tafsirul Qur-an N°60</a>
-                                <a  target="_blank" class="btn btn-xs btn-danger" href="Required/pdf/Tafsir60.pdf">Telecharger Pdf</a><br>
-                                <hr>
-                            </div>
-
+         </div>
+         <div>
+            <a class="btn-link btn-xs" data-toggle="modal" data-target="#cx" href="#">Cheikhoul xadim</a>
+            <div class="modal modal-message modal-info fade" id="cx" style="display: none;" aria-hidden="true">
+               <div class="modal-dialog modal-sm">
+                  <div class="modal-content " style="">
+                     <div class="modal-body">
+                        <div class="modal-header">
+                           <i class="fa fa-file" style="color:#57B5E3 !important"></i>
                         </div>
-
-                    </div>
-                </div>
-                <div>
-                    <a class="btn-link btn-xs" data-toggle="modal" data-target="#att" href="#">Ahkâmu-t-Tajwïd</a>
-
-                    <div class="modal fade" id="att">
-
-                        <div class="modal-dialog ">
-
-                            <div class="modal-content " style="background-color: rgb(255, 255, 255) ! important;">
-<button type="button" class="close" data-dismiss="modal">x</button>
-                                <p class="text-center">Bientot Disponible </p>
-
-                            </div>
-
+                        <div class="modal-title">Cheikhoul xadim </div>
+                        <div class="modal-body">
+                           <p>
+                              Bientot Disponible 
+                           </p>
                         </div>
-
-                    </div>
-                </div>
-                <div>
-                    <a a class="btn-link btn-xs" data-toggle="modal" data-target="#hat" href="#"  target="_blank">Hatmoul Qur-ân</a>
-
-                   <div class="modal fade" id="hat">
-
-                        <div class="modal-dialog ">
-
-                            <div class="modal-content " style="background-color: rgb(255, 255, 255) ! important;">
-<button type="button" class="close" data-dismiss="modal">x</button>
-                                <hr>
-                              &nbsp;&nbsp;&nbsp;<a href="view.php?id=70" target="_blank" class="btn btn-success btn-xs"> Hatmoul Qur-ân</a> <a  target="_blank" class="btn btn-xs btn-danger" href="Required/pdf/HatmoulQur-an.pdf">Telecharger Pdf</a>
-                              <br><hr>
-
-                            </div>
-
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
                         </div>
-
-                    </div>
-                </div>
-                <div>
-                    <a class="btn-link btn-xs" data-toggle="modal" data-target="#thaq" href="#">Tayssiroul Hassir ak Al Qur-ân</a>
-
-                    <div class="modal fade" id="thaq">
-
-                        <div class="modal-dialog ">
-
-                            <div class="modal-content " style="background-color: rgb(255, 255, 255) ! important;">
-
-                                <button type="button" class="close" data-dismiss="modal">x</button><hr>
-                                <p style="padding: 10px;text-align: justify">Selon Serigne Cheikh Diagne de la Bibliothèque Xadimu-r-Rassul de Touba,les gens de daaray Kaamil avaient l'habitude de recevoir du Cheikh, des qassidas en guise de Hatmul Qur'an. Un jour il appela Cheikh Mouhammadou Lamine Diop Dagana et lui dis qu'il leur a trouvé un Hatmu qui ne changera plus jamais. Ensuite il leur remet le Tayssir. C'est alors avant de débuter il apprenne une partie (sur les 6) avant de commencer la lecture et de la refermer avec la même partie; et de poursuivre ainsi de suite tous les autres; une fois fini, on recommence. Cela justifie sans nulle doute le fait de retrouver sur nombreux Tayssir le mot "Waqaf", cela délimite les parties dont on vient de parler. Serigne Cheikh Diagne précise : "Nous n'utilisons de Hatmu que celui donner par le cheikh, c'est cela le Ndiguël qu'il a donné; l'autre on ne l'apprend pas ". C'est pour cela et pour faciliter la lecture et la compréhension de ceci que drouss.org vous propose un Tayssir en six (6) parties. Cependant, d'aucun préconise à ceux-ci qui se regroupent pour lire le Coran en entier (Watié Kaamil) de l'apprendre en deux temps à chaque récital du Coran, comme suit: "du début jusqu'à "Bi Charqi wa-t-Tîni" avant de commencer et de poursuivre le reste une fois le récital terminer". Ndiguël laa gui nonou</p>
-                                <hr>
-                              &nbsp;&nbsp;&nbsp;<a href="view.php?id=99" target="_blank" class="btn btn-success btn-xs"> Taysir(Partie 1)</a> <a  target="_blank" class="btn btn-xs btn-danger" href="Required/pdf/TaysirPartie1.pdf">Telecharger Pdf</a>
-                              <br><hr>
-                                &nbsp;&nbsp;&nbsp;<a href="view.php?id=100" target="_blank" class="btn btn-xs btn-success"> Taysir(Partie 2)</a>
-                                <a  target="_blank" class="btn btn-xs btn-danger" href="Required/pdf/TaysirPartie2.pdf">Telecharger Pdf</a><br><hr>
-                                &nbsp;&nbsp;&nbsp;<a href="view.php?id=101" target="_blank" class="btn btn-xs btn-success"> Taysir(Partie 3)</a>
-                                <a  target="_blank" class="btn btn-xs btn-danger" href="Required/pdf/TaysirPartie3.pdf">Telecharger Pdf</a><br><hr>
-                                &nbsp;&nbsp;&nbsp;<a href="view.php?id=102" target="_blank" class="btn btn-xs btn-success"> Taysir(Partie 4)</a>
-                                <a  target="_blank" class="btn btn-xs btn-danger" href="Required/pdf/Taysir4.pdf">Telecharger Pdf</a><br><hr>
-                                &nbsp;&nbsp;&nbsp;<a href="view.php?id=103" target="_blank" class="btn btn-xs btn-success"> Taysir(Partie 5)</a>
-                                <a  target="_blank" class="btn btn-xs btn-danger" href="Required/pdf/TaysirPartie5.pdf">Telecharger Pdf</a><br><hr>
-                                &nbsp;&nbsp;&nbsp;<a href="view.php?id=104" target="_blank" class="btn btn-xs btn-success"> Taysir(Partie 6)</a>
-                                <a  target="_blank" class="btn btn-xs btn-danger" href="Required/pdf/TaysirPartie6.pdf">Telecharger Pdf</a><br><hr>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
+                     </div>
+                  </div>
+               </div>
             </div>
+         </div>
+         <div>
+            <a class="btn-link btn-xs" data-toggle="modal" data-target="#sfm" href="#">Serigne Fallou Macke</a>
+            <div class="modal modal-message modal-info fade" id="sfm" style="display: none;" aria-hidden="true">
+               <div class="modal-dialog modal-sm">
+                  <div class="modal-content " style="">
+                     <div class="modal-body">
+                        <div class="modal-header">
+                           <i class="fa fa-file" style="color:#57B5E3 !important"></i>
+                        </div>
+                        <div class="modal-title">Serigne Fallou Macke </div>
+                        <div class="modal-body">
+                           <p>
+                              Bientot Disponible 
+                           </p>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div>
+            <a class="btn-link btn-xs" data-toggle="modal" data-target="#sah" href="#">Serigne Abdoul Ahad et Serigne Hamzatou Mbacké </a>
+            <div class="modal modal-message modal-info fade" id="sah" style="display: none;" aria-hidden="true">
+               <div class="modal-dialog modal-sm">
+                  <div class="modal-content " style="">
+                     <div class="modal-body">
+                        <div class="modal-header">
+                           <i class="fa fa-file" style="color:#57B5E3 !important"></i>
+                        </div>
+                        <div class="modal-title">Serigne Abdoul Ahad et Serigne Hamzatou Mbacké </div>
+                        <div class="modal-body">
+                           <p>
+                              Bientot Disponible 
+                           </p>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div>
+            <a class="btn-link btn-xs" data-toggle="modal" data-target="#dm" href="#">Daroul Minan <span class="text-muted"></span></a>
+            <div class="modal modal-message modal-info fade" id="dm" style="display: none;" aria-hidden="true">
+               <div class="modal-dialog modal-sm">
+                  <div class="modal-content " style="">
+                     <div class="modal-body">
+                        <div class="modal-header">
+                           <i class="fa fa-file" style="color:#57B5E3 !important"></i>
+                        </div>
+                        <div class="modal-title">Daroul Minan </div>
+                        <div class="modal-body">
+                           <p>
+                              Bientot Disponible 
+                           </p>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <hr style="border-color: #59B9FF;">
+         <h1 class="text-primary text-center">Hilmul Quran</h1>
+         <div>
+            <a class="btn-link btn-xs" data-toggle="modal" data-target="#tamd" href="#">Tafsirul Qur-ân Serigne Mouhammadou Dème</a>
+            <div class="modal modal-message modal-info fade" id="tamd" style="display: none;" aria-hidden="true">
+               <div class="modal-dialog modal-sm">
+                  <div class="modal-content " style="">
+                     <div class="modal-body">
+                        <div class="modal-header">
+                           <i class="fa fa-file" style="color:#57B5E3 !important"></i>
+                        </div>
+                        <div class="modal-title">Tafsirul Qur-ân Serigne Mouhammadou Dème</div>
+                        <div class="modal-body">
+                           <a href="{{ path('book_online_book',{'name' : 'Mawdiru+Zaman+Fi+Tafsirul+Qur-an(Fatiha)'}) }}" target="_blank" class="btn btn-xs btn-success"> Fatiha </a> <a href="Required/pdf/TafsirFatiha.pdf" class="btn btn-xs btn-danger">Télécharger Pdf</a><br><br>
+                           <a href="{{ path('book_online_book',{'name' : 'Mawdiru+Zaman+Fi+Tafsirul+Qur-an58'}) }}" target="_blank" class="btn btn-xs btn-success"> N° 58
+                           </a>  <a href="Required/pdf/Tafsir58.pdf" class="btn btn-xs btn-danger">Télécharger Pdf</a><br><br>
+                           <a href="{{ path('book_online_book',{'name' : 'Mawdiru+Zaman+Fi+Tafsirul+Qur-an59'}) }}" target="_blank" class="btn btn-xs btn-success"> N° 59
+                           </a>  <a href="Required/pdf/Tafsir59.pdf" class="btn btn-xs btn-danger">Télécharger Pdf</a><br><br>
+                           <a href="{{ path('book_online_book',{'name' : 'Mawdiru+Zaman+Fi+Tafsirul+Qur-an60'}) }}" target="_blank" class="btn btn-xs btn-success"> N° 60
+                           </a>  <a href="Required/pdf/Tafsir60.pdf" class="btn btn-xs btn-danger">Télécharger Pdf</a><br>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div>
+            <a class="btn-link btn-xs" data-toggle="modal" data-target="#att" href="#">Ahkâmu-t-Tajwïd</a>
+            <div class="modal modal-message modal-info fade" id="att" style="display: none;" aria-hidden="true">
+               <div class="modal-dialog modal-sm">
+                  <div class="modal-content " style="">
+                     <div class="modal-body">
+                        <div class="modal-header">
+                           <i class="fa fa-file" style="color:#57B5E3 !important"></i>
+                        </div>
+                        <div class="modal-title">Ahkâmu-t-Tajwïd </div>
+                        <div class="modal-body">
+                           <p>
+                              Bientot Disponible 
+                           </p>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div>
+            <a a class="btn-link btn-xs" data-toggle="modal" data-target="#hat" href="#"  target="_blank">Hatmoul Qur-ân</a>
+            <div class="modal modal-message modal-info fade" id="hat" style="display: none;" aria-hidden="true">
+               <div class="modal-dialog modal-sm">
+                  <div class="modal-content " style="">
+                     <div class="modal-body">
+                        <div class="modal-header">
+                           <i class="fa fa-file" style="color:#57B5E3 !important"></i>
+                        </div>
+                        <div class="modal-title">Hatmoul Qur-ân </div>
+                        <div class="modal-body">
+                           <a href="{{ path('book_online_book',{'name' : 'Hatmoul+Qur-ân'}) }}" target="_blank" class="btn btn-xs btn-success"> Lire en Ligne </a>  <a href="Required/pdf/HatmoulQur-an.pdf" class="btn btn-xs btn-danger">Télécharger Pdf</a><br>
+                           <hr>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div>
+            <a class="btn-link btn-xs" data-toggle="modal" data-target="#thaq" href="#">Tayssiroul Hassir ak Al Qur-ân</a>
+            <div class="modal modal-message modal-info fade" id="thaq" style="display: none;" aria-hidden="true">
+               <div class="modal-dialog modal-lg">
+                  <div class="modal-content " style="">
+                     <div class="modal-body">
+                        <div class="modal-header">
+                           <i class="fa fa-file" style="color:#57B5E3 !important"></i>
+                        </div>
+                        <div class="modal-title">Tafsirul Qur-ân Serigne Mouhammadou Dème</div>
+                        <div class="modal-body">
+							<p>
+								Selon Serigne Cheikh Diagne de la Bibliothèque Xadimu-r-Rassul de Touba,les gens de daaray Kaamil avaient l'habitude de recevoir du Cheikh, des qassidas en guise de Hatmul Qur'an. Un jour il appela Cheikh Mouhammadou Lamine Diop Dagana et lui dis qu'il leur a trouvé un Hatmu qui ne changera plus jamais. Ensuite il leur remet le Tayssir. C'est alors avant de débuter il apprenne une partie (sur les 6) avant de commencer la lecture et de la refermer avec la même partie; et de poursuivre ainsi de suite tous les autres; une fois fini, on recommence. Cela justifie sans nulle doute le fait de retrouver sur nombreux Tayssir le mot "Waqaf", cela délimite les parties dont on vient de parler. Serigne Cheikh Diagne précise : "Nous n'utilisons de Hatmu que celui donner par le cheikh, c'est cela le Ndiguël qu'il a donné; l'autre on ne l'apprend pas ". C'est pour cela et pour faciliter la lecture et la compréhension de ceci que drouss.org vous propose un Tayssir en six (6) parties. Cependant, d'aucun préconise à ceux-ci qui se regroupent pour lire le Coran en entier (Watié Kaamil) de l'apprendre en deux temps à chaque récital du Coran, comme suit: "du début jusqu'à "Bi Charqi wa-t-Tîni" avant de commencer et de poursuivre le reste une fois le récital terminer". Ndiguël laa gui nonou
+							</p>
+                           <a href="{{ path('book_online_book',{'name' : 'Taysir+(Partie 1)'}) }}" target="_blank" class="btn btn-xs btn-success"> Taysir 1 </a>  <a href="Required/pdf/TaysirPartie1.pdf" class="btn btn-xs btn-danger">Télécharger Pdf</a><br><br>
+                           <a href="{{ path('book_online_book',{'name' : 'Taysir+(Partie 2)'}) }}" target="_blank" class="btn btn-xs btn-success"> Taysir 2
+                           </a>  <a href="Required/pdf/TaysirPartie2.pdf" class="btn btn-xs btn-danger">Télécharger Pdf</a><br><br>
+                           <a href="{{ path('book_online_book',{'name' : 'Taysir+(Partie 3)'}) }}" target="_blank" class="btn btn-xs btn-success"> Taysir 3
+                           </a>  <a href="Required/pdf/TaysirPartie3.pdf" class="btn btn-xs btn-danger">Télécharger Pdf</a><br><br>
+                           <a href="{{ path('book_online_book',{'name' : 'Taysir+(Partie 4)'}) }}" target="_blank" class="btn btn-xs btn-success"> Taysir 4
+                           </a>  <a href="Required/pdf/TaysirPartie4.pdf" class="btn btn-xs btn-danger">Télécharger Pdf</a><br><br>
+							
+                           <a href="{{ path('book_online_book',{'name' : 'Taysir+(Partie 5)'}) }}" target="_blank" class="btn btn-xs btn-success"> Taysir 5
+                           </a>  <a href="Required/pdf/TaysirPartie5.pdf" class="btn btn-xs btn-danger">Télécharger Pdf</a><br><br>
+							
+                           <a href="{{ path('book_online_book',{'name' : 'Taysir+(Partie 6)'}) }}" target="_blank" class="btn btn-xs btn-success"> Taysir 6
+                           </a>  <a href="Required/pdf/TaysirPartie6.pdf" class="btn btn-xs btn-danger">Télécharger Pdf</a><br>
+							
+                          
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}
 
-        </div>
-    </div>
-       
- {% endblock %} 

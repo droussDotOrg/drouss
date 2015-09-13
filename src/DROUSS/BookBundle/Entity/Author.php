@@ -17,6 +17,11 @@ class Author
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+	
+	/**
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $Oumma;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=false)
@@ -53,7 +58,7 @@ class Author
     {
         // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
         // le document/image dans la vue.
-        return 'uploads/authors';
+        return 'Required/media/images/auteurs';
     }
 	
 	
@@ -114,7 +119,7 @@ class Author
     public function __construct()
     {
         $this->Book = new \Doctrine\Common\Collections\ArrayCollection();
-
+		
     }
 
     /**
@@ -228,13 +233,27 @@ class Author
     {
         return $this->Book;
     }
-}
 
-/*s_upload_dir:
-    base: "%kernel.root_dir%/src/DROUSS/BookBundle/Resources/upload"
-    pdf: "%kernel.root_dir%/src/DROUSS/BookBundle/Resources/upload/pdf"
-    epub: "%kernel.root_dir%/src/DROUSS/BookBundle/Resources/upload/epub"
-    otherFormat: "%kernel.root_dir%/src/DROUSS/BookBundle/Resources/upload/otherformat"
-    blanket: "%kernel.root_dir%/src/DROUSS/BookBundle/Resources/upload/blanket"
-    authorimage: "%kernel.root_dir%/src/DROUSS/BookBundle/Resources/upload/authorimage"
-    messagerrrorlog: "%kernel.root_dir%/src/DROUSS/BookBundle/Resources/upload/messagerrrorlog"*/
+    /**
+     * Set Oumma
+     *
+     * @param boolean $oumma
+     * @return Author
+     */
+    public function setOumma($oumma)
+    {
+        $this->Oumma = $oumma;
+
+        return $this;
+    }
+
+    /**
+     * Get Oumma
+     *
+     * @return boolean 
+     */
+    public function getOumma()
+    {
+        return $this->Oumma;
+    }
+}

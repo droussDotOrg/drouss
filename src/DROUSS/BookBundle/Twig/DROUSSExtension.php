@@ -27,7 +27,7 @@ class DROUSSExtension extends \Twig_Extension
 	function clean_extraitFilter($string)
 {
     // Provides: <body text='black'>
-    $string = strip_tags($string, '<br><br/><strong><b><i><em>');
+    $string = strip_tags($string, '<br><strong><b><i><em>');
     return $string;
 }
 	

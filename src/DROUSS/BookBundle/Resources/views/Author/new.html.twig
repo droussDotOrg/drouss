@@ -40,3 +40,7 @@
 {% block footer%}
 	
 {% endblock %}
+{% block script_start %}
+	 {{ parent() }}
+	 {{ tinymce_init({'use_callback_tinymce_init': true, 'theme': {'simple': {'menubar': false}}}) }}
+{% endblock %}
